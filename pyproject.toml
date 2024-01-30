@@ -1,0 +1,18 @@
+#This section declares what are your build system dependencies, and which library will be used to actually do the packaging.
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "phyloBGC"
+version = "0.1.0"
+authors = [{name = "YunyingXie", email = "xieyy@imb.pumc.edu.cn"}]
+description = "phyloBGC: a tool to generate BGC networks based on phylogenesis."
+dependencies = [
+    'pandas',
+	'ncbi-genome-download == 0.3.3',
+                ]
+license = "MIT"
+
+[project.scripts]
+phyloBGC = "phyloBGC.commond_line:main"
