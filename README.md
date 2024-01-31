@@ -35,7 +35,7 @@ pip install --editable .
 
    - **BiG-SCAPE**: Install using Docker. Follow the instructions provided in the [BiG-SCAPE Installation Guide](https://bigscape-corason.secondarymetabolites.org/installation/).
 
-# Usage
+## Usage
 There are two main ways to use phyloBGC: step by step or all in one.
 
 Step by Step
@@ -45,7 +45,7 @@ Here is an example of how to use phyloBGC step by step:
 conda activate phylo
 phyloBGC download -g 'Kitasatospora' -p $direction -complete
 phyloBGC check -g 'Kitasatospora' -p $direction
-phyloBGC taxonomy -g 'Kitasatospora' -p /home/xyy/kita
+phyloBGC taxonomy -g 'Kitasatospora' -p $direction
 phyloBGC antismash  -p $direction
 phyloBGC antismash  -p $direction
 phyloBGC bigscape  -p $direction
@@ -57,14 +57,14 @@ All in One
 Alternatively, you can run all steps at once:
 
 ```bash 
-phyloBGC all -g 'Kitasatospora' -p /home/xyy/kita_all -complete
+phyloBGC all -g 'Kitasatospora' -p $direction -complete
 
 ```
 
 This command will download complete genomes in the genus of Kitasatospora. If you want to download all genomes in the genus of Kitasatospora, you can use the following command:
 
 ```bash
-phyloBGC all -g 'Kitasatospora' -p /home/xyy/kita_all
+phyloBGC all -g 'Kitasatospora' -p  $direction
 
 ```
 
