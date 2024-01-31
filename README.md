@@ -1,6 +1,6 @@
 # phyloBGC
 
-phyloBGC is a tool to generate Biosynthetic Gene Cluster (BGC) networks based on phylogenesis. It includes four main steps:
+phyloBGC is a tool to generate Biosynthetic Gene Cluster (BGC) networking based on phylogenesis. It includes four main steps:
 
 1. Download specific genus genomes from NCBI
 2. Evaluate the contamination by checkM
@@ -10,13 +10,21 @@ phyloBGC is a tool to generate Biosynthetic Gene Cluster (BGC) networks based on
 
 ## Installation
 
-Before using phyloBGC, you need to install it. You can do this by activating the conda environment:
+Before using phyloBGC, you need to install it. Follow these steps:
+
+1. Create a new conda environment with Python 3.8:
 
 ```bash
-conda activate phyloBG
-
+conda create -n phylo python=3.8
 ```
+2. Download or clone the phyloBGC program.
 
+3. Navigate to the directory where pyproject.toml is located in phyloBGC.
+
+4. Install the program in editable mode:
+```bash
+pip install --editable .
+```
 # Usage
 There are two main ways to use phyloBGC: step by step or all in one.
 
@@ -24,6 +32,7 @@ Step by Step
 Here is an example of how to use phyloBGC step by step:
 
 ```bash
+conda activate phylo
 phyloBGC download -g 'Kitasatospora' -p $direction -complete
 phyloBGC check -g 'Kitasatospora' -p $direction
 phyloBGC taxonomy -g 'Kitasatospora' -p /home/xyy/kita
