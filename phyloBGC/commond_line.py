@@ -83,9 +83,9 @@ def main():
                 print('Please specify the path to save the results.')
             else:
                 if args.complete_genomes:
-                    pyloBGC_complete_genomes(args.genus,args.path,args.cpus,args.format,args.completeness,args.contamination,args.contigs,args.N50,args.cpus,args.mode)
+                    pyloBGC_complete_genomes(args.genus,args.path,args.format,args.completeness,args.contamination,args.contigs,args.N50,args.cpus,args.mode)
                 else:
-                    pyloBGC_all_genomes(args.genus,args.path,args.cpus,args.format,args.completeness,args.contamination,args.contigs,args.N50,args.cpus,args.mode)
+                    pyloBGC_all_genomes(args.genus,args.path,args.format,args.completeness,args.contamination,args.contigs,args.N50,args.cpus,args.mode)
 
   
 if __name__ == '__main__':
