@@ -25,6 +25,16 @@ conda create -n phylo python=3.8
 ```bash
 pip install --editable .
 ```
+5. Install other dependencies:
+
+   - **CheckM**: Install using bioconda. Follow the instructions provided in the [CheckM Installation Guide](https://github.com/Ecogenomics/CheckM/wiki/Installation#how-to-install-checkm).
+
+   - **GTDB-Tk 2.3.2**: Install using bioconda. Follow the instructions provided in the [GTDB-Tk Installation Guide](https://ecogenomics.github.io/GTDBTk/installing/index.html).
+
+   - **antiSMASH**: Install using Docker (antiSMASH standalone). Follow the instructions provided in the [antiSMASH Installation Guide](https://docs.antismash.secondarymetabolites.org/install/).
+
+   - **BiG-SCAPE**: Install using Docker. Follow the instructions provided in the [BiG-SCAPE Installation Guide](https://bigscape-corason.secondarymetabolites.org/installation/).
+
 # Usage
 There are two main ways to use phyloBGC: step by step or all in one.
 
