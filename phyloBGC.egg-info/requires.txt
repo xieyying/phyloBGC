@@ -1,0 +1,2 @@
+pandas
+ncbi-genome-download==0.3.3

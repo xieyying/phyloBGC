@@ -48,14 +48,14 @@ def unzip_files(path):
 
 # 主函数
 def download_all_genomes_workflow(genus,path,format="fasta"):
-    download_all_genomes(format, genus,path)
+    download_all_genomes(genus,path,format)
     validate(path)
     move_files(path)
     unzip_files(path)
     print('All fasta files in ', genus, ' are downloaded and prepared.')
 
 def download_complete_genomes_workflow(genus,path,format="fasta"):
-    download_complete_genomes(format, genus,path)
+    download_complete_genomes(genus,path,format)
     validate(path)
     move_files(path)
     unzip_files(path)

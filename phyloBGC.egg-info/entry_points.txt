@@ -1,0 +1,2 @@
+[console_scripts]
+phyloBGC = phyloBGC.commond_line:main

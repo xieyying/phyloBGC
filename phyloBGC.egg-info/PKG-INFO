@@ -1,0 +1,8 @@
+Metadata-Version: 2.1
+Name: phyloBGC
+Version: 0.1.0
+Summary: phyloBGC: a tool to generate BGC networks based on phylogenesis.
+Author-email: YunyingXie <xieyy@imb.pumc.edu.cn>
+License: MIT
+Requires-Dist: pandas
+Requires-Dist: ncbi-genome-download==0.3.3

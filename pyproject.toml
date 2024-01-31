@@ -12,7 +12,9 @@ dependencies = [
     'pandas',
 	'ncbi-genome-download == 0.3.3',
                 ]
-license = "MIT"
+
+[project.license]
+text = "MIT"
 
 [project.scripts]
 phyloBGC = "phyloBGC.commond_line:main"

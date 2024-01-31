@@ -3,20 +3,20 @@ import glob
 import os
 import subprocess
 
-def checkManalyze(path,t=2,reduced_tree=True):
-    format = os.listdir(path)[0].split('.')[-1]
+def checkManalyze(path,cpus=2,reduced_tree=True):
+    
     # Run the checkm command
     output = path + "/fasta_check_output"
     input_ = path + "/fasta"
+    format = os.listdir(input_)[0].rsplit('.',1)[-1]
     os.makedirs(output, exist_ok=True)
-    activate_command = "conda activate checkm"
-
+   
     #运行checkm命令
-    command = "conda run -n checkm checkm lineage_wf " + input_ + " " + output + " -t " + str(t) + " -x " + format + " --reduced_tree > " + path+ "_check_output/checkManalyze.out 2>&1"
+    # command = "conda run -n checkm nohup checkm lineage_wf " + input_ + " " + output + " -t " + str(t) + " -x " + format + " --reduced_tree > " + path+ "_check_output/checkManalyze.out 2>&1"
 
     # If checkm is in a specific environment, you can use the following command
     # you can use conda env list to check the path of checkm and replace the path in the command
-    # command = "conda run -p /home/xyy/miniconda3_py311/miniconda3_py311/envs/checkm nohup checkm lineage_wf " + path + " " + output + " -t " + str(t) + " -x " + format + " --reduced_tree > " + path+ "_check_output/checkManalyze.out 2>&1"
+    command = "conda run -p /home/xyy/miniconda3_py311/miniconda3_py311/envs/checkm nohup checkm lineage_wf " + input_ + " " + output + " -t " + str(cpus) + " -x " + format +  " --reduced_tree > " + input_+ "_check_output/checkManalyze.out 2>&1"
     subprocess.run(command, shell=True, check=True)
 
 def checkM2csv(path):
@@ -55,8 +55,8 @@ def contamination_evaluation(path,completeness=95,contamination=15,contigs=1000,
     # 选择completeness大于95且 contamination小于15的菌株,保存为非污染菌株
     df1=df[df['completeness']>=95]
     df1=df1[df1['contamination']<=15]
-    print('The number of no contaminated strains is: ',len(df1))
-    df1.to_csv(path +'/fasta_check_output/checkm_no_contaminated.csv',index=False)
+    print('The number of uncontaminated strains is: ',len(df1))
+    df1.to_csv(path +'/fasta_check_output/checkm_uncontaminated.csv',index=False)
  
     # 选择completeness小于95或contamination小于15的菌株，保存为污染菌株
     df2=df[df['completeness']<95]
@@ -99,13 +99,13 @@ def contamination_evaluation(path,completeness=95,contamination=15,contigs=1000,
         if file.split('.')[0] not in picked_id_list:
             os.rename(path+'/fasta/'+file,path+'/fasta_contaminated/'+file)
 
-def checkM_evaluation_work(path,completeness=95,contamination=15,contigs=1000,N50=5000):
-    # checkManalyze(path)
+def checkM_evaluation_workflow(path,cpus,completeness=95,contamination=15,contigs=1000,N50=5000):
+    checkManalyze(path,cpus)
     contamination_evaluation(path,completeness,contamination,contigs,N50)
     print('CheckM analysis is Done!')
 
 if __name__ == "__main__":
-    file = r'/home/xyy/test/fasta'
+    file = r'/home/xyy/kita'
     checkM_evaluation_work(file)
     
    

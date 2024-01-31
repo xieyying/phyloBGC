@@ -1,0 +1,16 @@
+README.md
+pyproject.toml
+phyloBGC/__init__.py
+phyloBGC/checkM_evaluation.py
+phyloBGC/commond_line.py
+phyloBGC/down_and_validation.py
+phyloBGC/gtdbtk_evaluation.py
+phyloBGC/main.py
+phyloBGC/run_antismash.py
+phyloBGC/run_bigscape.py
+phyloBGC.egg-info/PKG-INFO
+phyloBGC.egg-info/SOURCES.txt
+phyloBGC.egg-info/dependency_links.txt
+phyloBGC.egg-info/entry_points.txt
+phyloBGC.egg-info/requires.txt
+phyloBGC.egg-info/top_level.txt

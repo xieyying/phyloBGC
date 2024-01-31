@@ -1,7 +1,7 @@
 from phyloBGC.main import *
 import os
 import argparse
-from .parameters import run_parameters
+
 import importlib_resources
 
 #通过终端选择运行模式
@@ -36,6 +36,8 @@ def main():
             help='the number of cpus to use, default: 56')
     parser.add_argument('-m', '--mode', default='global',
             help='the mode of bigscape, default: global')
+    parser.add_argument('-complete', '--complete_genomes', action='store_true',
+            help='only download complete genomes, default: False')
     args = parser.parse_args()
 
     #处理命令行参数
@@ -49,12 +51,15 @@ def main():
             if args.path is None:
                 print('Please specify the path to save the results.')
             else:
-                download_all_genomes_workflow(args.genus,args.path,args.format)
+                if args.complete_genomes:
+                    download_complete_genomes_workflow(args.genus,args.path,args.format)
+                else:
+                    download_all_genomes_workflow(args.genus,args.path,args.format)
     if args.run == 'check':
         if args.path is None:
             print('Please specify the path to save the results.')
         else:
-            contamination_evaluation(args.path,args.completeness,args.contamination,args.contigs,args.N50)
+            checkM_evaluation_workflow(args.path,args.cpus,args.completeness,args.contamination,args.contigs,args.N50)
     if args.run == 'taxonomy':
         if args.path is None:
             print('Please specify the path to save the results.')
@@ -64,7 +69,7 @@ def main():
         if args.path is None:
             print('Please specify the path to save the results.')
         else:
-            run_antismash_workflow(args.path,args.mode)
+            run_antismash_workflow(args.path,args.cpus)
     if args.run == 'bigscape':
         if args.path is None:
             print('Please specify the path to save the results.')
@@ -77,7 +82,10 @@ def main():
             if args.path is None:
                 print('Please specify the path to save the results.')
             else:
-                pyloBGC_all_genomes(args.genus,args.path,args.format,args.completeness,args.contamination,args.contigs,args.N50,args.cpus,args.mode)
+                if args.complete_genomes:
+                    pyloBGC_complete_genomes(args.genus,args.path,args.cpus,args.format,args.completeness,args.contamination,args.contigs,args.N50,args.cpus,args.mode)
+                else:
+                    pyloBGC_all_genomes(args.genus,args.path,args.cpus,args.format,args.completeness,args.contamination,args.contigs,args.N50,args.cpus,args.mode)
 
   
 if __name__ == '__main__':

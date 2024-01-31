@@ -4,19 +4,19 @@ import os
 import subprocess
     
 
-def gtdbtkAnalyze(path, t=8):
+def gtdbtkAnalyze(path, cpus=8):
     # Run the checkm command
     input_ = path + "/fasta"
     output = path + "/fasta_classify_wf"
 
-    format = os.listdir(input_)[0].split('.')[-1]
+    format = os.listdir(input_)[0].rsplit('.',1)[-1]
   
     # Run gtdbtk command
     # command = ['conda run -n gtdbtk-2.3.2 gtdbtk classify_wf --genome_dir '+input_+ ' --out_dir ' + output +' --skip_ani_screen --extension '+ format +' --cpus '+ str(t)]
 
     # If gtdbtk is in a specific environment, you can use the following command
     # you can use conda env list to check the path of gtdbtk and replace the path in the command
-    command = ['conda run -p /home/xyy/miniconda3_py311/miniconda3_py311/envs/gtdbtk-2.3.2 gtdbtk classify_wf --genome_dir '+input_+ ' --out_dir ' + output +' --skip_ani_screen --extension '+ format +' --cpus '+ str(t)]
+    command = ['conda run -p /home/xyy/miniconda3_py311/miniconda3_py311/envs/gtdbtk-2.3.2 nohup gtdbtk classify_wf --genome_dir '+input_+ ' --out_dir ' + output +' --skip_ani_screen --extension '+ format +' --cpus '+ str(cpus)]
     subprocess.run(command, shell=True, check=True)
 
     # building tree
@@ -78,7 +78,7 @@ def gtdbtk_building_tree(path, cpus=56):
 def gtbtk_analysis_workflow(path, genus, cpus=56):
     gtdbtkAnalyze(path, cpus)
     gtdbtkEvaluation(path, genus)
-    gtdbtk_building_tree(path, cpus)
+    # gtdbtk_building_tree(path, cpus)
  
 
 if __name__ == '__main__':
