@@ -12,11 +12,12 @@ def checkManalyze(path,cpus=2,reduced_tree=True):
     os.makedirs(output, exist_ok=True)
    
     #运行checkm命令
-    # command = "conda run -n checkm nohup checkm lineage_wf " + input_ + " " + output + " -t " + str(t) + " -x " + format + " --reduced_tree > " + path+ "_check_output/checkManalyze.out 2>&1"
+    command = "conda run -n checkm nohup checkm lineage_wf " + input_ + " " + output + " -t " + str(cpus) + " -x " + format +  " --reduced_tree > " + input_+ "_check_output/checkManalyze.out 2>&1"
+  # command = "conda run -n checkm nohup checkm lineage_wf " + input_ + " " + output + " -t " + str(t) + " -x " + format + " --reduced_tree > " + path+ "_check_output/checkManalyze.out 2>&1"
 
     # If checkm is in a specific environment, you can use the following command
     # you can use conda env list to check the path of checkm and replace the path in the command
-    command = "conda run -p /home/xyy/miniconda3_py311/miniconda3_py311/envs/checkm nohup checkm lineage_wf " + input_ + " " + output + " -t " + str(cpus) + " -x " + format +  " --reduced_tree > " + input_+ "_check_output/checkManalyze.out 2>&1"
+    # command = "conda run -p /home/xyy/miniconda3_py311/miniconda3_py311/envs/checkm nohup checkm lineage_wf " + input_ + " " + output + " -t " + str(cpus) + " -x " + format +  " --reduced_tree > " + input_+ "_check_output/checkManalyze.out 2>&1"
     subprocess.run(command, shell=True, check=True)
 
 def checkM2csv(path):

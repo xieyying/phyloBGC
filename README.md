@@ -1,6 +1,6 @@
 # phyloBGC
 
-phyloBGC is a tool to generate Biosynthetic Gene Cluster (BGC) networking based on phylogenesis. It includes four main steps:
+phyloBGC is a tool to generate Biosynthetic Gene Cluster (BGC) networking based on bacterial phylogenesis. It includes four main steps:
 
 1. Download specific genus genomes from NCBI
 2. Evaluate the contamination by checkM

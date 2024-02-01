@@ -56,6 +56,7 @@ def run_antismash(path):
         print(f"{file_name} has finished")
         print(f"Time taken: {end_time - start_time} seconds")
         print('antismash analysis is done!')
+        
 def sub_run_antismash(file_name, path):
     print(f"Running {file_name} ...")
     # start_time = time.time()

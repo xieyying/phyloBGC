@@ -37,7 +37,6 @@ def move_files(path):
     os.makedirs(path+"/fasta", exist_ok=True)
     command = "mv " + path + "/refseq/bacteria/*/*.gz " + path + "/fasta"
     print(command)
-
     subprocess.run(command, shell=True)
 
 # 解压
