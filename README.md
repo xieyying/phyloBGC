@@ -35,6 +35,8 @@ pip install --editable .
 
    - **BiG-SCAPE**: Install using Docker. Follow the instructions provided in the [BiG-SCAPE Installation Guide](https://bigscape-corason.secondarymetabolites.org/installation/).
 
+Note: This package has been tested and confirmed to work on Ubuntu systems. Testing on other systems has not been conducted.
+
 ## Usage
 There are two main ways to use phyloBGC: step by step or all in one.
 
